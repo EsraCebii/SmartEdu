@@ -20,7 +20,6 @@ app.set("view engine", "ejs");
 global.userIN = null;
 
 //Middlewares
-
 app.use(express.static("public"));
 app.use(express.json()); // for parsing application/json
 app.use(express.urlencoded({ extended: true })); // for parsing application/
@@ -31,15 +30,12 @@ app.use(
       saveUninitialized: true,
     })
   );
-app.use(
-    session({
-      secret: 'my_keyboard_cat',
-      resave: false,
-      saveUninitialized: true,
-    })
-);
 
 //Routes
+app.use('*', (req, res, next) => {
+  userIN = req.session.userID;
+  next();
+});
 app.use('/', pageRoute);
 app.use('/courses', courseRoute)
 app.use('/categories', categoryRoute)
