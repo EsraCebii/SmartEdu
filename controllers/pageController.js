@@ -28,6 +28,7 @@ exports.getContactPage = (req, res) => {
     });
 };
 exports.sendEmail = async (req, res) => {
+    try {
     const outputMessage = `
         <h1>Mail Details</h1>
             <ul>
@@ -58,5 +59,12 @@ exports.sendEmail = async (req, res) => {
       console.log("Message sent: %s", info.messageId);
       console.log("Preview URL: %s", nodemailer.getTestMessageUrl(info));
 
+      req.flash("success", "We received your message succesfully.");
+
       res.status(200).redirect('contact');
+    } catch (err) {
+        req.flash("error", `Something happened! ${err}`)
+        res.status(200).redirect('contact');
+    }
+
 };
