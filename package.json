@@ -4,14 +4,14 @@
   "description": "Education Portal",
   "main": "app.js",
   "scripts": {
-    "start": "nodemon app.js"
+    "start": "node app.js"
   },
   "keywords": [
     "node.js",
     "education",
     "portal"
   ],
-  "author": "\"Esra Çebi\"",
+  "author": "Esra Çebi",
   "license": "ISC",
   "dependencies": {
     "bcrypt": "^5.0.1",
