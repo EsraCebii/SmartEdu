@@ -14,6 +14,7 @@ Smartedu education portal template was used in this project.
 + Session kavramı
 + Admin alanı
 + Slugify
++ Template engine - ejs
 
 ## libraries and Packages
 + Nodejs
