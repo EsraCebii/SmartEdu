@@ -12,7 +12,7 @@ const userRoute = require('./routes/userRoute')
 const app = express();
 
 // Connect DB
-mongoose.connect('mongodb+srv://ismail:1234@cluster0.dk0nt.mongodb.net/myFirstDatabase?retryWrites=true&w=majority', {
+mongoose.connect('mongodb://localhost/smartedu-db', {
   useNewUrlParser: true,
   useUnifiedTopology: true,
 
@@ -35,7 +35,7 @@ app.use(
       secret: 'my_keyboard_cat', // Buradaki texti değiştireceğiz.
       resave: false,
       saveUninitialized: true,
-      store: MongoStore.create({ mongoUrl: 'mongodb+srv://ismail:1234@cluster0.dk0nt.mongodb.net/myFirstDatabase?retryWrites=true&w=majority' })
+      store: MongoStore.create({ mongoUrl: 'mongodb://localhost/smartedu-db' })
     })
 );
 app.use(flash());
@@ -58,7 +58,7 @@ app.use('/categories', categoryRoute)
 app.use('/users', userRoute)
 
 
-const port = process.env.PORT || 5000;
+const port = 3000;
 app.listen(port, () => {
     console.log(`App started on port ${port}`);
 });
